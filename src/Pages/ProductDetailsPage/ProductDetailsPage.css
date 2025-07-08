@@ -1,0 +1,33 @@
+.product-details {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+}
+
+.product-details img {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.product-details h2 {
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  margin-bottom: 10px;
+}
+
+.details-counter button {
+  padding: 8px 12px;
+  margin: 0 5px;
+}
+
+.details-counter span {
+  margin: 0 10px;
+  font-weight: bold;
+}

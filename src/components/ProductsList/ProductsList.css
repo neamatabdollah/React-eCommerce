@@ -1,0 +1,24 @@
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px;
+}
+
+.product-list-container {
+  padding: 40px;
+}
+
+.search-box {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-box input {
+  padding: 10px 20px;
+  width: 50%;
+  max-width: 400px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}

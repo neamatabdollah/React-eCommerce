@@ -1,0 +1,64 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #111;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.navbar-logo span {
+  color: #f90;
+  font-size: larger;
+}
+
+.navbar-logo:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+.navbar-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.navbar-links li a:hover {
+  background: #f90;
+  color: #111;
+}
+
+.cart-counter {
+  background: #f90;
+  color: #111;
+  padding: 3px 8px;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-left: 5px;
+  font-size: 12px;
+  position: absolute;
+  top: -10px;
+  right: -2px;
+}
