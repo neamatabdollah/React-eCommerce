@@ -183,13 +183,17 @@ export default function RegisterPage() {
 
     if (!password) errs.password = "Password is required.";
     else {
-      if (!/(?=.*[A-Z])/.test(password)) errs.password = "Add uppercase letter.";
+      if (!/(?=.*[A-Z])/.test(password))
+        errs.password = "Add uppercase letter.";
       if (!/(?=.*\d)/.test(password)) errs.password = "Add number.";
-      if (!/(?=.*[!@#$%^&*])/.test(password)) errs.password = "Add special character.";
+      if (!/(?=.*[!@#$%^&*])/.test(password))
+        errs.password = "Add special character.";
     }
 
-    if (!confirmPassword) errs.confirmPassword = "Confirm Password is required.";
-    else if (confirmPassword !== password) errs.confirmPassword = "Passwords don't match.";
+    if (!confirmPassword)
+      errs.confirmPassword = "Confirm Password is required.";
+    else if (confirmPassword !== password)
+      errs.confirmPassword = "Passwords don't match.";
 
     return errs;
   };
@@ -203,7 +207,7 @@ export default function RegisterPage() {
       setErrors({});
       alert("Registered Successfully!");
       setIsDirty(false); // Reset Dirty
-      navigate("/"); // Or navigate("/login") if you want
+      navigate("/home"); // Or navigate("/login") if you want
     }
   };
 
@@ -220,7 +224,13 @@ export default function RegisterPage() {
   };
 
   useEffect(() => {
-    if (userName || email || password || confirmPassword || addresses.some((a) => a)) {
+    if (
+      userName ||
+      email ||
+      password ||
+      confirmPassword ||
+      addresses.some((a) => a)
+    ) {
       setIsDirty(true);
     }
   }, [userName, email, password, confirmPassword, addresses]);
@@ -230,17 +240,11 @@ export default function RegisterPage() {
       <h2>Register</h2>
       <form onSubmit={handleSubmit} className="register-form">
         <label>User Name:</label>
-        <input
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-        />
+        <input value={userName} onChange={(e) => setUserName(e.target.value)} />
         {errors.userName && <span className="error">{errors.userName}</span>}
 
         <label>Email:</label>
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} />
         {errors.email && <span className="error">{errors.email}</span>}
 
         <label>Password:</label>
@@ -257,7 +261,9 @@ export default function RegisterPage() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+        {errors.confirmPassword && (
+          <span className="error">{errors.confirmPassword}</span>
+        )}
 
         <label>Addresses:</label>
         {addresses.map((addr, i) => (
@@ -268,7 +274,9 @@ export default function RegisterPage() {
             onChange={(e) => handleAddressChange(i, e.target.value)}
           />
         ))}
-        <button type="button" onClick={handleAddAddress}>+ Add Address</button>
+        <button type="button" onClick={handleAddAddress}>
+          + Add Address
+        </button>
 
         <button type="submit">Register</button>
       </form>
