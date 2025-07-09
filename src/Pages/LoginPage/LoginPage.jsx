@@ -1,6 +1,6 @@
 import { useAuth } from "../../contexts/AuthContext/useAuth";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 
 export default function LoginPage() {
@@ -29,31 +29,40 @@ export default function LoginPage() {
         email: email,
         name: "Test User",
       });
-      navigate("/");
+      alert("Logged in successfully!");
+      navigate("/home");
     }
   };
   return (
     <div className="login-page">
       <h2>Login</h2>
       <form onSubmit={handleSubmit} className="login-form">
-        <label>Email:</label>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        {errors.email && <span className="error">{errors.email}</span>}
-
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {errors.password && <span className="error">{errors.password}</span>}
-
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errors.email && <span className="error">{errors.email}</span>}
+        </div>
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {errors.password && <span className="error">{errors.password}</span>}
+        </div>
         <button type="submit">Login</button>
       </form>
+
+      <div className="register-link">
+        <p>
+          Don't have an account? <Link to="/register">Register here</Link>
+        </p>
+      </div>
     </div>
   );
 }
