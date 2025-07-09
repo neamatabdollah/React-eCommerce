@@ -7,9 +7,9 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
+      <Link to="/home" className="navbar-logo">
         Shop<span>Easy</span>
-      </div>
+      </Link>
 
       <ul className="navbar-links">
         <li>

@@ -14,7 +14,8 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/products/:id" element={<ProductDetailsPage />} />
