@@ -9,8 +9,9 @@ import Footer from "../../components/Footer/Footer";
 export default function ProductDetailsPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const [count, setCount] = useState(0);
-  const { increaseCart, decreaseCart } = useCart();
+  // const [count, setCount] = useState(0);
+  // const { increaseCart, decreaseCart } = useCart();
+  const { cartItems, updateCount, addToCart } = useCart();
 
   useEffect(() => {
     axiosInterceptor.get(`/products/${id}`).then((res) => {
@@ -18,24 +19,26 @@ export default function ProductDetailsPage() {
     });
   }, [id]);
 
-  const handleAddToCart = () => {
-    setCount(1);
-    increaseCart(1);
-  };
+  // const handleAddToCart = () => {
+  //   setCount(1);
+  //   increaseCart(1);
+  // };
 
-  const handleIncrease = () => {
-    if (count < product.stock) {
-      setCount(count + 1);
-      increaseCart(1);
-    }
-  };
+  // const handleIncrease = () => {
+  //   if (count < product.stock) {
+  //     setCount(count + 1);
+  //     increaseCart(1);
+  //   }
+  // };
 
-  const handleDecrease = () => {
-    if (count > 0) {
-      setCount(count - 1);
-      decreaseCart(1);
-    }
-  };
+  // const handleDecrease = () => {
+  //   if (count > 0) {
+  //     setCount(count - 1);
+  //     decreaseCart(1);
+  //   }
+  // };
+
+  if (!product) return <p>Loading...</p>;
 
   // Convert rating to stars
   const renderStars = () => {
@@ -47,8 +50,25 @@ export default function ProductDetailsPage() {
     ));
   };
 
-  if (!product) return <p>Loading...</p>;
+  // Get count from cartItems
+  const current = cartItems.find((item) => item.id === product.id);
+  const count = current?.count || 0;
 
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+
+  const handleIncrease = () => {
+    if (count < product.stock) {
+      updateCount(product.id, count + 1);
+    }
+  };
+
+  const handleDecrease = () => {
+    if (count > 0) {
+      updateCount(product.id, count - 1);
+    }
+  };
   return (
     <>
       <div className="Navbar">
