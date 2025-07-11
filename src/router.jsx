@@ -1,5 +1,6 @@
 import {
-  createBrowserRouter,
+  // createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
@@ -11,7 +12,7 @@ import CartPage from "./Pages/CartPage/CartPage";
 import ProductDetailsPage from "./Pages/ProductDetailsPage/ProductDetailsPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
-export const router = createBrowserRouter(
+export const router = createHashRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<LoginPage />} />
