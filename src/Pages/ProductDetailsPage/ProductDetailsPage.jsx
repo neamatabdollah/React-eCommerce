@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { axiosInterceptor } from "../../networks/interceptor";
-import { useCart } from "../../contexts/CartContext/useCart";
+// import { useCart } from "../../contexts/CartContext/useCart";
 import "./ProductDetailsPage.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { addCart, removeFromCart } from "../../contexts/store/cartSlice";
 
 export default function ProductDetailsPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   // const [count, setCount] = useState(0);
   // const { increaseCart, decreaseCart } = useCart();
-  const { cartItems, updateCount, addToCart } = useCart();
+  // const { cartItems, updateCount, addToCart } = useCart();
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.counter.cartItem);
 
   useEffect(() => {
     axiosInterceptor.get(`/products/${id}`).then((res) => {
@@ -55,18 +59,21 @@ export default function ProductDetailsPage() {
   const count = current?.count || 0;
 
   const handleAddToCart = () => {
-    addToCart(product);
+    // addToCart(product);
+    dispatch(addCart(product));
   };
 
   const handleIncrease = () => {
     if (count < product.stock) {
-      updateCount(product.id, count + 1);
+      // updateCount(product.id, count + 1);
+      dispatch(addCart(product));
     }
   };
 
   const handleDecrease = () => {
     if (count > 0) {
-      updateCount(product.id, count - 1);
+      // updateCount(product.id, count - 1);
+      dispatch(removeFromCart(product));
     }
   };
   return (

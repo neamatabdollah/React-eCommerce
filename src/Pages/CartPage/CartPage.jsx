@@ -1,10 +1,14 @@
-import { useCart } from "../../contexts/CartContext/useCart";
+// import { useCart } from "../../contexts/CartContext/useCart";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import "./CartPage.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addCart,removeFromCart } from "../../contexts/store/cartSlice";
 
 export default function CartPage() {
-  const { cartItems, updateCount } = useCart();
+  // const { cartItems, updateCount } = useCart();
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.counter.cartItem);
   const itemsInCart = cartItems.filter((item) => item.count > 0);
 
   const totalPrice = itemsInCart.reduce(
@@ -41,19 +45,21 @@ export default function CartPage() {
               <p>Unit Price: ${item.price}</p>
               <div className="quantity-control">
                 <button
-                  onClick={() =>
-                    updateCount(item.id, item.count > 0 ? item.count - 1 : 0)
-                  }
+                  // onClick={() =>
+                  //   updateCount(item.id, item.count > 0 ? item.count - 1 : 0)
+                  // }
+                  onClick={() => dispatch(removeFromCart(item))}
                 >
                   -
                 </button>
                 <span>{item.count}</span>
                 <button
                   onClick={() =>
-                    updateCount(
-                      item.id,
-                      item.count < item.stock ? item.count + 1 : item.count
-                    )
+                    // updateCount(
+                    //   item.id,
+                    //   item.count < item.stock ? item.count + 1 : item.count
+                    // )
+                    dispatch(addCart(item))
                   }
                 >
                   +

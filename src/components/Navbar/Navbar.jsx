@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { useCart } from "../../contexts/CartContext/useCart";
+// import { useCart } from "../../contexts/CartContext/useCart";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  const { cartCount } = useCart();
+  // const { cartCount } = useCart();
+  const count = useSelector((state) => state.counter?.totalCount);
+  console.log("totalCount", count);
 
   return (
     <nav className="navbar">
@@ -18,7 +21,8 @@ export default function Navbar() {
         <li>
           <Link to="/cart">
             {" "}
-            🛒 <span className="cart-counter">{cartCount}</span>
+            {/* 🛒 <span className="cart-counter">{cartCount}</span> */}
+            🛒 <span className="cart-counter">{count}</span>
           </Link>
         </li>
         <li>
