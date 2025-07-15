@@ -3,7 +3,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import "./CartPage.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addCart,removeFromCart } from "../../contexts/store/cartSlice";
+import { addCart, removeFromCart } from "../../contexts/store/cartSlice";
+import Loader from "../../components/Loader/Loader";
 
 export default function CartPage() {
   // const { cartItems, updateCount } = useCart();
@@ -19,6 +20,7 @@ export default function CartPage() {
   if (itemsInCart.length === 0) {
     return (
       <>
+        <Loader />
         <div className="Navbar">
           <Navbar />
         </div>
@@ -32,6 +34,7 @@ export default function CartPage() {
 
   return (
     <>
+      <Loader />
       <div className="Navbar">
         <Navbar />
       </div>

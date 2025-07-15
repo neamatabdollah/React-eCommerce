@@ -14,7 +14,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
-import { CartProvider } from "./contexts/CartContext/CartProvider";
+// import { CartProvider } from "./contexts/CartContext/CartProvider";
 import { LoaderProvider } from "./contexts/LoaderContext/LoaderProvider";
 import { AuthProvider } from "./contexts/AuthContext/AuthProvider";
 import { store } from "../src/contexts/store/index";
